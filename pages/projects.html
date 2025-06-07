@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Boyuan's Homepage</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .github-repo {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            transition: border-color 0.2s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+        }
+        
+        .github-repo:hover {
+            border-color: #0969da;
+        }
+        
+        .repo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .repo-name {
+            color: #0969da;
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .repo-visibility {
+            font-size: 0.75rem;
+            color: #57606a;
+            border: 1px solid #d0d7de;
+            border-radius: 2rem;
+            padding: 0.125rem 0.5rem;
+        }
+        
+        .repo-description {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            color: #24292f;
+            font-size: 0.875rem;
+        }
+        
+        .repo-stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .repo-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.75rem;
+            color: #57606a;
+        }
+        
+        .repo-languages {
+            font-size: 0.75rem;
+            color: #57606a;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .language-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.25rem;
+        }
+        
+        .repo-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+        }
+        
+        .repo-link {
+            display: none;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #57606a;
+        }
+        
+        .error {
+            color: #cf222e;
+            padding: 1rem;
+            border: 1px solid #cf222e;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .refresh-button {
+            padding: 0.3rem 0.8rem;
+            background-color: #f6f8fa;
+            color: #24292f;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .refresh-button:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .last-updated {
+            font-size: 0.8em;
+            color: #57606a;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        
+        /* Grid layout for repositories */
+        #github-repos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            #github-repos, #other-projects {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            #github-repos, #other-projects {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            #github-repos, #other-projects {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* GitHub language colors */
+        .lang-Python {
+            background-color: #3572A5;
+        }
+        
+        .lang-HTML {
+            background-color: #e34c26;
+        }
+        
+        .lang-JavaScript {
+            background-color: #f1e05a;
+        }
+        
+        .lang-CSS {
+            background-color: #563d7c;
+        }
+        
+        .lang-TypeScript {
+            background-color: #2b7489;
+        }
+        
+        .lang-Java {
+            background-color: #b07219;
+        }
+        
+        .lang-C {
+            background-color: #555555;
+        }
+        
+        .lang-CPP, .lang-C\+\+ {
+            background-color: #f34b7d;
+        }
+        
+        .lang-Shell {
+            background-color: #89e051;
+        }
+        
+        .lang-Jupyter {
+            background-color: #DA5B0B;
+        }
+        
+        .lang-Kotlin {
+            background-color: #A97BFF;
+        }
+        
+        .lang-Swift {
+            background-color: #F05138;
+        }
+        
+        .lang-Go {
+            background-color: #00ADD8;
+        }
+        
+        .lang-Rust {
+            background-color: #DEA584;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="../figures/profile.jpg" alt="Bryan(Boyuan) Deng" class="profile-img">
+                <h1>Bryan(Boyuan) Deng</h1>
+                <p class="hometown" style="font-style: normal;"><span class="label">Hometown: </span>L77星</p>
+                <p class="affiliation">Johns Hopkins University</p>
+                
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/boyuandeng1/" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" alt="LinkedIn" style="width: 1em; height: 1em; vertical-align: middle; filter: invert(1);">
+                    </a>
+                    <a href="https://github.com/bydeng01" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" alt="GitHub" style="width: 1em; height: 1em; vertical-align: middle; filter: invert(1);">
+                    </a>
+                    <a href="https://leetcode.com/u/bydeng01/" target="_blank">
+                        <img src="https://leetcode.com/static/images/LeetCode_logo_rvs.png" alt="LeetCode" style="width: 1em; height: 1em; vertical-align: middle;">
+                    </a>
+                    <a href="https://www.kaggle.com/bryanboyuan" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/kaggle.svg" alt="Kaggle" style="width: 1em; height: 1em; vertical-align: middle; filter: invert(1);">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Add top navigation -->
+            <nav class="top-nav">
+                <a href="/">Home</a>
+                <a href="publications.html">Publications</a>
+                <a href="projects.html" class="active">Projects</a>
+                <a href="media.html">Media</a>
+                <a href="blog.html">Blog</a>
+            </nav>
+
+            <section id="projects">
+                <div class="section-header">
+                    <h2>Repositories</h2>
+                    <button id="refresh-repos" class="refresh-button">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+                
+                <div id="github-repos">
+                    <div class="loading">Loading GitHub repositories...</div>
+                </div>
+                <p id="last-updated" class="last-updated"></p>
+                
+                <h2 style="margin-top: 3rem;">Other Projects</h2>
+                
+                <div id="other-projects" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                    <!-- Project 1 -->
+                    <div class="github-repo">
+                        <div class="repo-header">
+                            <h3 class="repo-name">Project Title 1</h3>
+                            <span class="repo-visibility">Personal</span>
+                        </div>
+                        <p class="repo-description">
+                            Description of your first project goes here.
+                        </p>
+                        <div class="repo-footer">
+                            <div class="repo-languages-container">
+                                <span><span class="language-dot lang-JavaScript"></span> JavaScript</span>
+                            </div>
+                            <div class="repo-stats">
+                                <span class="repo-stat">Date: YYYY-MM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="github-repo">
+                        <div class="repo-header">
+                            <h3 class="repo-name">Project Title 2</h3>
+                            <span class="repo-visibility">Personal</span>
+                        </div>
+                        <p class="repo-description">
+                            Description of your second project goes here.
+                        </p>
+                        <div class="repo-footer">
+                            <div class="repo-languages-container">
+                                <span><span class="language-dot lang-Python"></span> Python</span>
+                            </div>
+                            <div class="repo-stats">
+                                <span class="repo-stat">Date: YYYY-MM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchGitHubRepos();
+            
+            // Add event listener for refresh button
+            document.getElementById('refresh-repos').addEventListener('click', fetchGitHubRepos);
+        });
+        
+        function fetchGitHubRepos() {
+            const username = 'bydeng01';
+            const reposContainer = document.getElementById('github-repos');
+            const lastUpdatedElement = document.getElementById('last-updated');
+            const maxRepos = 24; // Set maximum number of repositories to display
+            
+            // Show loading message
+            reposContainer.innerHTML = '<div class="loading">Loading GitHub repositories...</div>';
+            
+            // Fetch repositories from GitHub API - now sorted by stars instead of update time
+            fetch(`https://api.github.com/users/${username}/repos?sort=stars&direction=desc&per_page=100`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch repositories');
+                    }
+                    return response.json();
+                })
+                .then(repos => {
+                    if (repos.length === 0) {
+                        reposContainer.innerHTML = '<p>No repositories found.</p>';
+                        return;
+                    }
+                    
+                    // Sort repositories by stars in descending order
+                    repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+                    
+                    // Clear loading message
+                    reposContainer.innerHTML = '';
+                    
+                    // Counter for displayed repositories
+                    let displayedRepos = 0;
+                    
+                    // Function to get language color class
+                    function getLanguageClass(language) {
+                        if (!language) return '';
+                        return `lang-${language.replace(/\s/g, '')}`;
+                    }
+                    
+                    // Process and display repositories
+                    repos.forEach(repo => {
+                        // Only process up to maxRepos repositories
+                        if (displayedRepos >= maxRepos) return;
+                        // Don't filter out forked repositories anymore
+                        
+                        // Create repository element
+                        const repoElement = document.createElement('div');
+                        repoElement.className = 'github-repo';
+                        
+                        // Create repository content
+                        repoElement.innerHTML = `
+                            <div class="repo-header">
+                                <h3 class="repo-name">
+                                    <a href="${repo.html_url}" target="_blank" style="color: inherit; text-decoration: none;">
+                                        ${repo.name}
+                                    </a>
+                                </h3>
+                                <span class="repo-visibility">Public</span>
+                            </div>
+                            <p class="repo-description">${repo.description || 'No description available.'}</p>
+                            <div class="repo-footer">
+                                <div class="repo-languages-container">
+                                    <span id="language-${repo.id}">Loading language...</span>
+                                </div>
+                                <div class="repo-stats">
+                                    <span class="repo-stat">
+                                        <i class="fas fa-star star-icon"></i> ${repo.stargazers_count}
+                                    </span>
+                                    <span class="repo-stat">
+                                        <i class="fas fa-code-branch fork-icon"></i> ${repo.forks_count}
+                                    </span>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Add repository element to container
+                        reposContainer.appendChild(repoElement);
+                        displayedRepos++;
+                        
+                        // Fetch languages for this repository
+                        fetch(repo.languages_url)
+                            .then(response => response.json())
+                            .then(languages => {
+                                const languagesList = Object.keys(languages);
+                                if (languagesList.length > 0) {
+                                    const primaryLanguage = languagesList[0];
+                                    const languageClass = getLanguageClass(primaryLanguage);
+                                    
+                                    const languageElement = document.getElementById(`language-${repo.id}`);
+                                    if (languageElement) {
+                                        languageElement.innerHTML = `
+                                            <span class="language-dot ${languageClass}"></span>
+                                            ${primaryLanguage}
+                                        `;
+                                    }
+                                } else {
+                                    const languageElement = document.getElementById(`language-${repo.id}`);
+                                    if (languageElement) {
+                                        languageElement.textContent = '';
+                                    }
+                                }
+                            })
+                            .catch(error => {
+                                console.error(`Error fetching languages for ${repo.name}:`, error);
+                                const languageElement = document.getElementById(`language-${repo.id}`);
+                                if (languageElement) {
+                                    languageElement.textContent = '';
+                                }
+                            });
+                    });
+                    
+                    // Update last updated time
+                    const now = new Date();
+                    lastUpdatedElement.textContent = `Last updated: ${now.toLocaleString()}`;
+                });
+        }
+    </script>
+</body>
+</html>

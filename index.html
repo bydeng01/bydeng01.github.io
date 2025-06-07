@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boyuan's Homepage</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .coursework-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .coursework-toggle {
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .coursework-toggle:hover {
+            color: #666;
+        }
+        
+        .coursework-toggle::before {
+            content: none;
+        }
+        
+        .coursework-toggle i {
+            display: inline-block;
+            margin-right: 5px;
+            transition: transform 0.3s;
+            font-size: 0.8em;
+        }
+        
+        .coursework-toggle.active i {
+            transform: rotate(90deg);
+        }
+        
+        /* Intro Animation Styles */
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.8s ease-in-out;
+            pointer-events: auto;
+        }
+        
+        .intro-content {
+            color: #fff;
+            font-family: SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+            width: 80%;
+            max-width: 800px;
+        }
+        
+        .intro-text {
+            font-size: 4.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 0 auto;
+            opacity: 0;
+            position: relative;
+        }
+        
+        .typewriter-container {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background-color: #fff;
+            margin-left: 4px;
+            vertical-align: text-bottom;
+            animation: blink 1s step-end infinite;
+            position: relative;
+            top: 0.1em;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .hello-text {
+            opacity: 0;
+        }
+        
+        .welcome-text {
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes fadeOut {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.02); }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .container {
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+        
+        /* Skip button styles */
+        .skip-intro-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1100;
+            transition: opacity 0.3s ease;
+            font-family: SF Pro Display, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            pointer-events: auto;
+        }
+        
+        .skip-intro-btn:hover {
+            opacity: 0.9;
+        }
+        
+        /* Triangle icon spacing */
+        .skip-intro-btn {
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Intro Animation Overlay -->
+    <div class="intro-overlay" id="introOverlay">
+        <!-- Skip button -->
+        <button id="skipIntroBtn" class="skip-intro-btn" onclick="document.getElementById('introOverlay').style.opacity='0'; setTimeout(function() { document.getElementById('introOverlay').style.display='none'; document.getElementById('mainContent').style.opacity='1'; }, 800);">
+            SKIP &nbsp;&nbsp;&#9658;
+        </button>
+        <div class="intro-content">
+            <div class="intro-text hello-text" id="helloText">
+                <div class="typewriter-container">
+                    <span class="typewriter-text"></span>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+            <div class="intro-text welcome-text" id="welcomeText">
+                <div class="typewriter-container">
+                    <span class="typewriter-text"></span>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container animated-content" id="mainContent">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img src="./figures/profile.jpg" alt="Bryan(Boyuan) Deng" class="profile-img">
+                <h1>Bryan(Boyuan) Deng</h1>
+                <p class="hometown" style="font-style: normal;"><span class="label">Hometown: </span>L77星</p>
+                <p class="affiliation">Johns Hopkins University</p>
+                
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/boyuandeng1/" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" alt="LinkedIn" style="width: 1em; height: 1em; vertical-align: middle; filter: invert(1);">
+                    </a>
+                    <a href="https://github.com/bydeng01" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/github.svg" alt="GitHub" style="width: 1em; height: 1em; vertical-align: middle; filter: invert(1);">
+                    </a>
+                    <a href="https://leetcode.com/u/bydeng01/" target="_blank">
+                        <img src="https://leetcode.com/static/images/LeetCode_logo_rvs.png" alt="LeetCode" style="width: 1em; height: 1em; vertical-align: middle;">
+                    </a>
+                    <a href="https://www.kaggle.com/bryanboyuan" target="_blank">
+                        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/kaggle.svg" alt="Kaggle" style="width: 1em; height: 1em; vertical-align: middle; filter: invert(1);">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Add top navigation -->
+            <nav class="top-nav">
+                <a href="/" class="active">Home</a>
+                <a href="pages/publications.html">Publications</a>
+                <a href="pages/projects.html">Projects</a>
+                <a href="pages/media.html">Media</a>
+                <a href="pages/blog.html">Blog</a>
+            </nav>
+
+            <section id="about">
+                <h2>README.md</h2>
+                <p>Non-professional 🏀 basketball player, professional sports commentator.</p>
+            </section>
+
+            <section id="education">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>Johns Hopkins University <span class="location">Baltimore, MD, USA</span></h3>
+                    <div class="degree-date">
+                        <p class="degree"><strong>Ph.D. in Civil and Systems Engineering</strong></p>
+                        <p class="date">Aug. 2024 - Expected May 2030</p>
+                    </div>
+                    <div class="details">
+                        <p></p>
+                    </div>
+
+                    <div class="degree-date">
+                        <p class="degree"><strong>M.S.E. in Applied Mathematics and Statistics</strong></p>
+                        <p class="date">Aug. 2024 - Expected May 2026</p>
+                    </div>
+                    <div class="details">
+                        <p></p>
+                    </div>
+                    <div class="details">
+                        <span class="coursework-toggle">
+                            <i class="fa-solid fa-angles-right"></i>
+                            <strong>Relevant Coursework</strong>
+                        </span>
+                        <div class="coursework-content">
+                            &nbsp;&nbsp;&nbsp;&nbsp;- EN.553.632 : Bayesian Statistics<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- EN.553.635 : Bayesian Statistics for the Physical Sciences<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- EN.553.636 : Introduction to Data Science<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- EN.553.688 : Computing for Applied Mathematics<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- EN.560.618 : Probabilistic Methods in Civil Engineering and Mechanics<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- EN.530.605 : Mechanics of Solids and Materials<br>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <h3>Duke University <span class="location">Durham, NC, USA</span></h3>
+                    <div class="degree-date">
+                        <p class="degree"><strong>M.Eng. in Computational Mechanics and Scientific Computing</strong> [<a href="https://www.parchment.com/u/s/FO6n" target="_blank" style="font-weight: normal; font-size: 0.9em;">Credential</a>]</p>
+                        <p class="date">Aug. 2022 - June 2024</p>
+                    </div>
+                    <p class="details">
+                        • <strong>Honors/Awards:</strong> <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- Duke University Civil Engineering Graduate Scholarship<br>
+                        <div class="details">
+                            <span class="coursework-toggle">
+                                <i class="fa-solid fa-angles-right"></i>
+                                <strong>Relevant Coursework</strong>
+                            </span>
+                            <div class="coursework-content">
+                                &nbsp;&nbsp;&nbsp;&nbsp;- <a href="https://math.duke.edu/math-557-syllabus" target="_blank">Math 557 : Introduction to Partial Differential Equations</a>
+                                [Qualifying Eligible (QE) course for the Math PhD]<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;- ECE 551D : Introduction to Programming, Data Structures, and Algorithms in C++<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;- CEE 520 : Continuum Mechanics<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;- CEE 530 / ME 524 : Introduction to the Finite Element Method<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;- CEE 630 / ME 525 : Nonlinear Finite Element Analysis<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;- CEE 628 : Uncertainty Quantification in Computational Science and Engineering<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;- CEE 690 : Advanced Fluid Mechanics<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;- CEE 690 : Chaotic Data-Systems Analysis<br>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3>Southwest Jiaotong University <span class="location">Chengdu, China</span></h3>
+                    <div class="degree-date">
+                        <p class="degree"><strong>B.Eng. in Civil Engineering</strong></p>
+                        <p class="date">Sep. 2018 - June 2022</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="research">
+                <h2>Research Experience</h2>
+                <div class="research-item">
+                    <h3>Shields Uncertainty Research Group, CaSE Dept., Johns Hopkins University <span class="location">Baltimore, MD, USA</span></h3>
+                    <div class="position-info">
+                      <div class="degree-date">
+                        <p><strong>Doctoral Research Assistant</strong></p>
+                        <p class="date">Aug. 2024 - Present</p>
+                      </div>
+                      <p style="padding-left: 20px;">
+                        - Extreme Mechanics of the Human Brain: TBD.
+                      </p>
+                    </div>
+                  </div>
+
+                <div class="research-item">
+                    <h3>Guglielmo Scovazzi Research Group, CEE Dept., Duke University <span class="location">Durham, NC, USA</span></h3>
+                    <div class="position-info">
+                      <div class="degree-date">
+                        <p><strong>Graduate Research Assistant</strong></p>
+                        <p class="date">May 2023 - Apr. 2024</p>
+                      </div>
+                      <p style="padding-left: 20px;">
+                        - Embedded Methods for Linear Elasticity: Bone scaffold topology optimization with the Shifted Boundary Method.
+                      </p>
+                    </div>
+                  </div>
+
+                <div class="research-item">
+                    <h3>Laura Dalton Research Group, CEE Dept., Duke University <span class="location">Durham, NC, USA</span></h3>
+                    <div class="position-info">
+                      <div class="degree-date">
+                        <p><strong>Graduate Research Assistant</strong></p>
+                        <p class="date">May 2023 - Feb. 2024</p>
+                      </div>
+                      <p style="padding-left: 20px;">
+                        - Alternative Cementitious Materials Testing: Triaxial testing, compression testing, and mechanical analysis 
+                        of cementitious materials.
+                      </p>
+                    </div>
+                  </div>
+                
+            </section>
+
+            <section id="work">
+                <h2>Work Experience</h2>
+                <div class="work-item">
+                    <h3>Company Name <span class="location">City, State, Country</span></h3>
+                    <div class="position-info">
+                      <div class="degree-date">
+                        <p><strong>Job Title</strong></p>
+                        <p class="date">Month Year - Month Year</p>
+                      </div>
+                      <p style="padding-left: 20px;">
+                        - Description of responsibilities and achievements.
+                      </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- LeetCode Stats Board -->
+            <img src="https://leetcard.jacoblin.cool/bydeng01?theme=dark&font=Iceland&ext=heatmap" alt="LeetCode Stats">
+        </div>
+    </div>
+    <script>
+        // Only toggling details within Education
+        document.querySelectorAll(".coursework-toggle").forEach((toggle) => {
+          toggle.addEventListener("click", () => {
+            let content = toggle.nextElementSibling;
+            if (!content || !content.classList.contains("coursework-content")) {
+              content = toggle.closest("div").querySelector(".coursework-content");
+            }
+    
+            toggle.classList.toggle("active");
+    
+            if (toggle.classList.contains("active")) {
+              content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+              content.style.maxHeight = 0;
+            }
+          });
+        });
+      </script>
+    
+    <!-- Animation script -->
+    <script src="js/animation.js"></script>
+</body>
+</html>
