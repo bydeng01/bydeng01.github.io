@@ -167,9 +167,13 @@ h2 {
     margin-bottom: 2rem;
     border-bottom: 1px solid #ddd;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
 }
 
 .top-nav a {
@@ -199,20 +203,48 @@ h2 {
     background-color: #333;
 }
 
+/* Visitor Tracker Styles */
 .visitor-tracker {
-    margin-left: auto;
     display: flex;
     align-items: center;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    color: #495057;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-.visitor-tracker img {
-    height: 20px;
-    border-radius: 3px;
+.visitor-tracker:hover {
+    background-color: #e9ecef;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.visitor-tracker .icon {
+    margin-right: 8px;
+    color: #6c757d;
+    font-size: 0.8rem;
+}
+
+.visitor-count {
+    font-weight: 600;
+    color: #343a40;
     transition: transform 0.2s ease;
 }
 
-.visitor-tracker img:hover {
-    transform: scale(1.05);
+/* Responsive design for visitor tracker */
+@media (max-width: 768px) {
+    .visitor-tracker {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
+    .visitor-tracker .icon {
+        margin-right: 6px;
+    }
 }
 
 /* Project Styles */
