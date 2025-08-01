@@ -166,6 +166,10 @@ h2 {
     padding: 1rem 0;
     margin-bottom: 2rem;
     border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
 }
 
 .top-nav a {
@@ -193,6 +197,22 @@ h2 {
     height: 100%;
     width: 3px;
     background-color: #333;
+}
+
+.visitor-tracker {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.visitor-tracker img {
+    height: 20px;
+    border-radius: 3px;
+    transition: transform 0.2s ease;
+}
+
+.visitor-tracker img:hover {
+    transform: scale(1.05);
 }
 
 /* Project Styles */
