@@ -8,69 +8,136 @@
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .media-item {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+        .gaming-section {
+            padding: 40px 0;
         }
-        
-        .media-item:last-child {
-            border-bottom: none;
+
+        .section-header {
+            margin-bottom: 50px;
+            text-align: center;
         }
-        
-        .media-title {
-            margin-bottom: 5px;
-        }
-        
-        .media-date {
-            color: #666;
-            font-size: 0.9em;
+
+        .section-header h2 {
+            font-size: 3em;
+            font-weight: 600;
             margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        .media-description {
-            margin-bottom: 15px;
+
+        .section-header p {
+            font-size: 1.2em;
+            color: #666;
+            font-weight: 300;
         }
-        
-        .media-links {
-            margin-top: 10px;
-        }
-        
-        .media-links a {
-            display: inline-block;
-            margin-right: 15px;
-            color: #0066cc;
-            text-decoration: none;
-        }
-        
-        .media-links a:hover {
-            text-decoration: underline;
-        }
-        
-        .media-thumbnail {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .video-container {
+
+        .seasons-gallery {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            margin-bottom: 15px;
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            border-radius: 5px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            padding: 20px 0 40px 0;
+        }
+
+        /* Hide scrollbar but keep functionality */
+        .seasons-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+        .seasons-gallery {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .seasons-container {
+            display: inline-flex;
+            gap: 40px;
+            padding: 0 20px;
+        }
+
+        .season-card {
+            flex: 0 0 auto;
+            width: 450px;
+            scroll-snap-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .season-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .season-image-container {
+            position: relative;
+            width: 100%;
+            background: #f8f9fa;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .season-card:hover .season-image-container {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .season-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .season-info {
+            padding: 30px 10px;
+            text-align: center;
+        }
+
+        .season-title {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+        }
+
+        .ranking-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ranking-item {
+            font-size: 1.1em;
+            color: #666;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+
+        .ranking-item strong {
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            text-align: center;
+            margin-top: 20px;
+            color: #999;
+            font-size: 0.9em;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .season-card {
+                width: 320px;
+            }
+
+            .section-header h2 {
+                font-size: 2.2em;
+            }
         }
     </style>
 </head>
@@ -113,53 +180,34 @@
                 <a href="blog.html">Blog</a>
             </nav>
 
-            <section id="media">
-                <h2>Media</h2>
-                
-                <!-- Media Item 1 - Example Video -->
-                <div class="media-item">
-                    <h3 class="media-title">Basketball Commentary Highlights</h3>
-                    <p class="media-date">March 2024</p>
-                    <div class="video-container">
-                        <!-- Replace with your actual YouTube embed code -->
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <p class="media-description">
-                        Highlights from my recent basketball commentary session at the Johns Hopkins University intramural tournament.
-                    </p>
-                    <div class="media-links">
-                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Full Video</a>
-                        <a href="#" target="_blank"><i class="fas fa-file-alt"></i> Transcript</a>
+            <section id="gaming" class="gaming-section">
+                <div class="section-header">
+                    <h2>Gaming</h2>
+                    <p>Competitive gaming achievements across seasons</p>
+                </div>
+
+                <div class="seasons-gallery">
+                    <div class="seasons-container">
+                        <!-- Season 8 -->
+                        <div class="season-card">
+                            <div class="season-image-container">
+                                <img src="../figures/S8.PNG" alt="Season 8 Finals Ranking">
+                            </div>
+                            <div class="season-info">
+                                <h3 class="season-title">Season 8</h3>
+                                <div class="ranking-info">
+                                    <div class="ranking-item">Overall ranking</div>
+                                    <div class="ranking-item">Ranking in North America</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Future seasons will be added here -->
                     </div>
                 </div>
 
-                <!-- Media Item 2 - Example Interview -->
-                <div class="media-item">
-                    <h3 class="media-title">Interview: The Future of Computational Mechanics</h3>
-                    <p class="media-date">January 2024</p>
-                    <img src="https://via.placeholder.com/800x450" alt="Interview thumbnail" class="media-thumbnail">
-                    <p class="media-description">
-                        An in-depth interview with the Engineering Department newsletter discussing my research in computational mechanics and scientific computing.
-                    </p>
-                    <div class="media-links">
-                        <a href="#" target="_blank"><i class="fas fa-newspaper"></i> Read Article</a>
-                        <a href="#" target="_blank"><i class="fas fa-podcast"></i> Listen to Podcast</a>
-                    </div>
-                </div>
-
-                <!-- Media Item 3 - Example Podcast -->
-                <div class="media-item">
-                    <h3 class="media-title">Podcast Appearance: Engineering Today</h3>
-                    <p class="media-date">November 2023</p>
-                    <img src="https://via.placeholder.com/800x450" alt="Podcast thumbnail" class="media-thumbnail">
-                    <p class="media-description">
-                        Guest appearance on the Engineering Today podcast discussing the intersection of civil engineering and data science.
-                    </p>
-                    <div class="media-links">
-                        <a href="#" target="_blank"><i class="fas fa-podcast"></i> Listen on Spotify</a>
-                        <a href="#" target="_blank"><i class="fab fa-apple"></i> Listen on Apple Podcasts</a>
-                        <a href="#" target="_blank"><i class="fas fa-file-alt"></i> Show Notes</a>
-                    </div>
+                <div class="scroll-indicator">
+                    Scroll to explore more seasons →
                 </div>
             </section>
         </div>
