@@ -166,6 +166,54 @@
         .certificate-link:hover {
             background-color: #1565c0;
         }
+
+        /* Lectures & Presentations styles */
+        .presentations-subsection {
+            margin-bottom: 30px;
+        }
+
+        .presentations-subsection h3 {
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #631879;
+            color: #631879;
+        }
+
+        .presentation-item {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 10px;
+            padding: 8px 0;
+        }
+
+        .presentation-number {
+            min-width: 35px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .presentation-details {
+            flex: 1;
+        }
+
+        .presentation-title {
+            font-style: italic;
+        }
+
+        .presentation-links {
+            margin-top: 4px;
+        }
+
+        .presentation-links a {
+            color: #1976d2;
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-right: 8px;
+        }
+
+        .presentation-links a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -310,13 +358,40 @@
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Add more publication subsections as needed, e.g.:
-                <div class="publication-subsection">
-                    <h3>Journal Articles</h3>
-                    Journal publications would go here
+            <section id="presentations">
+                <h2>Lectures & Presentations</h2>
+
+                <div class="presentations-subsection">
+                    <h3>Conference and Seminar Talks (in chronological order)</h3>
+
+                    <div class="presentation-item">
+                        <span class="presentation-number">[1]</span>
+                        <div class="presentation-details">
+                            <span class="presentation-title">"Physics-Informed Gaussian Processes for Solving the Helmholtz Equation"</span>,
+                            NCS20, University of Pennsylvania, 2026
+                            <div class="presentation-links">
+                                <a href="../files/NCS20_Program.pdf" target="_blank">[Program]</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                -->
+
+                <div class="presentations-subsection">
+                    <h3>Poster Presentations (in chronological order)</h3>
+
+                    <div class="presentation-item">
+                        <span class="presentation-number">[1]</span>
+                        <div class="presentation-details">
+                            <span class="presentation-title">"Physics-Informed Gaussian Processes for Solving the Helmholtz Equation"</span>,
+                            HEMI Day, Johns Hopkins University, 2026
+                            <div class="presentation-links">
+                                <a href="https://hemi.jhu.edu/wp-content/uploads/2026/01/HEMI-Day-Event-Program-online-final.pdf" target="_blank">[Program]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </div>
