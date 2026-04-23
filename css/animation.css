@@ -1,6 +1,5 @@
-/* Apple-style animations */
+/* ── Intro Animation ── */
 
-/* Smooth fade transitions */
 @keyframes fadeIn {
     0% { opacity: 0; transform: scale(0.98); }
     100% { opacity: 1; transform: scale(1); }
@@ -11,13 +10,11 @@
     100% { opacity: 0; transform: scale(1.02); }
 }
 
-/* Blinking cursor animation */
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
 
-/* Typewriter effect animations */
 .intro-text {
     position: relative;
     display: flex;
@@ -35,28 +32,26 @@
 
 .cursor {
     display: inline-block;
-    width: 3px;
+    width: 2px;
     height: 1em;
-    background-color: #fff;
-    margin-left: 2px;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin-left: 3px;
     vertical-align: text-bottom;
     animation: blink 1s step-end infinite;
     position: relative;
     top: 0.1em;
 }
 
-/* Container for typewriter text and cursor */
 .typewriter-container {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    white-space: nowrap; /* Prevent line breaks */
+    white-space: nowrap;
 }
 
-/* Enhanced intro styling for Apple-like feel */
 .intro-overlay {
-    background: rgb(0, 0, 0);
+    background: #000000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,15 +69,14 @@
     margin: 0 auto;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .intro-text {
-        font-size: 3rem;
+        font-size: clamp(2rem, 6vw, 3rem);
     }
 }
 
 @media (max-width: 480px) {
     .intro-text {
-        font-size: 2.2rem;
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
     }
-} 
+}

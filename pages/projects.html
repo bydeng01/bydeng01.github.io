@@ -9,217 +9,182 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .github-repo {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            transition: border-color 0.2s;
+            margin-bottom: 0;
+            padding: 1.25rem;
+            border: 1px solid #e8e8ed;
+            border-radius: 12px;
+            transition: box-shadow 0.3s ease;
             height: 100%;
             display: flex;
             flex-direction: column;
             background-color: #fff;
         }
-        
+
         .github-repo:hover {
-            border-color: #0969da;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
-        
+
         .repo-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.5rem;
         }
-        
+
         .repo-name {
-            color: #0969da;
+            color: #0071e3;
             margin: 0;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
         }
-        
-        .repo-visibility {
-            font-size: 0.75rem;
-            color: #57606a;
-            border: 1px solid #d0d7de;
-            border-radius: 2rem;
-            padding: 0.125rem 0.5rem;
+
+        .repo-name a {
+            color: #0071e3 !important;
         }
-        
+
+        .repo-visibility {
+            font-size: 0.7rem;
+            color: #86868b;
+            border: 1px solid #d2d2d7;
+            border-radius: 980px;
+            padding: 0.125rem 0.6rem;
+            font-weight: 500;
+        }
+
         .repo-description {
             margin-bottom: 1rem;
-            line-height: 1.5;
+            line-height: 1.6;
             flex-grow: 1;
-            color: #24292f;
-            font-size: 0.875rem;
+            color: #1d1d1f;
+            font-size: 0.85rem;
         }
-        
+
         .repo-stats {
             display: flex;
             gap: 1rem;
             margin-bottom: 0.5rem;
         }
-        
+
         .repo-stat {
             display: flex;
             align-items: center;
             gap: 0.3rem;
             font-size: 0.75rem;
-            color: #57606a;
+            color: #86868b;
         }
-        
+
         .repo-languages {
             font-size: 0.75rem;
-            color: #57606a;
+            color: #86868b;
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
         }
-        
+
         .language-dot {
             display: inline-block;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             margin-right: 0.25rem;
         }
-        
+
         .repo-footer {
             margin-top: auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 0.75rem;
+            color: #86868b;
         }
-        
+
         .repo-link {
             display: none;
         }
-        
+
         .loading {
             text-align: center;
             padding: 2rem;
-            color: #57606a;
+            color: #86868b;
         }
-        
+
         .error {
-            color: #cf222e;
+            color: #ff3b30;
             padding: 1rem;
-            border: 1px solid #cf222e;
-            border-radius: 6px;
+            border: 1px solid #ff3b30;
+            border-radius: 8px;
             margin-bottom: 1rem;
         }
-        
+
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
         }
-        
+
         .refresh-button {
-            padding: 0.3rem 0.8rem;
-            background-color: #f6f8fa;
-            color: #24292f;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
+            padding: 6px 16px;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            border: 1px solid #d2d2d7;
+            border-radius: 980px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s ease;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: inherit;
         }
-        
+
         .refresh-button:hover {
-            background-color: #f3f4f6;
+            background-color: #ebebed;
         }
-        
+
         .last-updated {
             font-size: 0.8em;
-            color: #57606a;
-            font-style: italic;
-            margin-top: 0.5rem;
+            color: #86868b;
+            font-style: normal;
+            margin-top: 0.75rem;
         }
-        
-        /* Grid layout for repositories */
+
         #github-repos {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
+            gap: 1.25rem;
         }
-        
-        /* Responsive adjustments */
+
         @media (max-width: 1200px) {
             #github-repos, #other-projects {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(3, 1fr) !important;
             }
         }
-        
+
         @media (max-width: 992px) {
             #github-repos, #other-projects {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr) !important;
             }
         }
-        
+
         @media (max-width: 576px) {
             #github-repos, #other-projects {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
             }
         }
-        
-        /* GitHub language colors */
-        .lang-Python {
-            background-color: #3572A5;
-        }
-        
-        .lang-HTML {
-            background-color: #e34c26;
-        }
-        
-        .lang-JavaScript {
-            background-color: #f1e05a;
-        }
-        
-        .lang-CSS {
-            background-color: #563d7c;
-        }
-        
-        .lang-TypeScript {
-            background-color: #2b7489;
-        }
-        
-        .lang-Java {
-            background-color: #b07219;
-        }
-        
-        .lang-C {
-            background-color: #555555;
-        }
-        
-        .lang-CPP, .lang-C\+\+ {
-            background-color: #f34b7d;
-        }
-        
-        .lang-Shell {
-            background-color: #89e051;
-        }
-        
-        .lang-Jupyter {
-            background-color: #DA5B0B;
-        }
-        
-        .lang-Kotlin {
-            background-color: #A97BFF;
-        }
-        
-        .lang-Swift {
-            background-color: #F05138;
-        }
-        
-        .lang-Go {
-            background-color: #00ADD8;
-        }
-        
-        .lang-Rust {
-            background-color: #DEA584;
-        }
+
+        .lang-Python { background-color: #3572A5; }
+        .lang-HTML { background-color: #e34c26; }
+        .lang-JavaScript { background-color: #f1e05a; }
+        .lang-CSS { background-color: #563d7c; }
+        .lang-TypeScript { background-color: #2b7489; }
+        .lang-Java { background-color: #b07219; }
+        .lang-C { background-color: #555555; }
+        .lang-CPP, .lang-C\+\+ { background-color: #f34b7d; }
+        .lang-Shell { background-color: #89e051; }
+        .lang-Jupyter { background-color: #DA5B0B; }
+        .lang-Kotlin { background-color: #A97BFF; }
+        .lang-Swift { background-color: #F05138; }
+        .lang-Go { background-color: #00ADD8; }
+        .lang-Rust { background-color: #DEA584; }
     </style>
 </head>
 <body>
@@ -276,7 +241,7 @@
                 
                 <h2 style="margin-top: 3rem;">Other Projects</h2>
                 
-                <div id="other-projects" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                <div id="other-projects" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;">
                     <!-- Project 1 -->
                     <div class="github-repo">
                         <div class="repo-header">
