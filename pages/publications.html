@@ -238,6 +238,39 @@
         .publication-links a:hover {
             color: #0077ed;
         }
+
+        @media (max-width: 1024px) {
+            .flex-row {
+                flex-direction: column;
+            }
+
+            .section-divider {
+                width: 100%;
+                height: 1px;
+            }
+
+            .conference-columns {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .conference-publication {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .conference-tag {
+                width: auto;
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+
+            .conference-content {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
