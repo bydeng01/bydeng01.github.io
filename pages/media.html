@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media - Boyuan's Homepage</title>
+    <title>News & Media - Boyuan's Homepage</title>
     <link rel="stylesheet" href="../css/styles.css">
     <!-- Font Awesome for social icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -139,6 +139,91 @@
                 font-size: 2rem;
             }
         }
+
+        .news-archive-section {
+            padding: 2rem 0 1rem 0;
+        }
+        .news-archive-section .section-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .news-archive-section .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+        .news-archive-section .section-header p {
+            font-size: 1.1em;
+            color: #86868b;
+            font-weight: 400;
+        }
+        .news-archive-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .news-card {
+            border: 1px solid #e8e8ed;
+            border-radius: 12px;
+            padding: 1.25rem;
+            background-color: #fff;
+            transition: box-shadow 0.3s ease;
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+        .news-card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+        .news-card .news-card-date {
+            flex-shrink: 0;
+            width: 90px;
+            color: #86868b;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding-top: 2px;
+        }
+        .news-card .news-card-content {
+            flex: 1;
+            color: #1d1d1f;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .news-card .news-card-content p {
+            margin: 0 0 0.5rem 0;
+        }
+        .news-card .news-card-content p:last-child {
+            margin-bottom: 0;
+        }
+        .news-card-link {
+            color: #0071e3;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .news-card-link:hover {
+            color: #0077ed;
+        }
+        .section-divider-horizontal {
+            border: none;
+            border-top: 1px solid #d2d2d7;
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+        @media (max-width: 576px) {
+            .news-card {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .news-card .news-card-date {
+                width: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -176,9 +261,20 @@
                 <a href="/">Home</a>
                 <a href="publications.html">Publications</a>
                 <a href="projects.html">Projects</a>
-                <a href="media.html" class="active">Media</a>
+                <a href="media.html" class="active">News & Media</a>
                 <a href="blog.html">Blog</a>
             </nav>
+
+            <section id="news-archive" class="news-archive-section">
+                <div class="section-header">
+                    <h2>News</h2>
+                    <p>Recent updates, talks, and milestones</p>
+                </div>
+                <div class="news-archive-list" id="newsArchiveList">
+                    <!-- Populated by js/news.js -->
+                </div>
+            </section>
+            <hr class="section-divider-horizontal">
 
             <section id="gaming" class="gaming-section">
                 <div class="section-header">
@@ -211,5 +307,31 @@
             </section>
         </div>
     </div>
+    <script src="../js/news.js"></script>
+    <script>
+        (function renderNewsArchive() {
+            const list = document.getElementById('newsArchiveList');
+            if (!list || typeof newsItems === 'undefined') return;
+            if (newsItems.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #86868b;">No news yet. Check back soon.</p>';
+                return;
+            }
+            list.innerHTML = newsItems.map(item => {
+                const body = item.detail || item.text;
+                const linkHtml = item.link
+                    ? `<p><a href="${item.link}" target="_blank" rel="noopener" class="news-card-link">${item.linkText || 'Learn more'} →</a></p>`
+                    : '';
+                return `
+                    <div class="news-card">
+                        <div class="news-card-date">${item.date}</div>
+                        <div class="news-card-content">
+                            <p>${body}</p>
+                            ${linkHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        })();
+    </script>
 </body>
-</html> 
+</html>

@@ -253,6 +253,55 @@
 
         .cert-button:hover { background-color: #f5f5f7; }
         .cert-button i { font-size: 0.75em; }
+
+        .news-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 1rem 0 0 0;
+        }
+        .news-list li {
+            display: flex;
+            gap: 1rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #f5f5f7;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .news-list li:last-child {
+            border-bottom: none;
+        }
+        .news-list .news-date {
+            flex-shrink: 0;
+            width: 80px;
+            color: #86868b;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+        .news-list .news-text {
+            color: #1d1d1f;
+        }
+        .news-more {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        .news-more a {
+            color: #0071e3;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .news-more a:hover {
+            color: #0077ed;
+        }
+        @media (max-width: 576px) {
+            .news-list li {
+                flex-direction: column;
+                gap: 0.15rem;
+            }
+            .news-list .news-date {
+                width: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -312,13 +361,23 @@
                 <a href="/" class="active">Home</a>
                 <a href="pages/publications.html">Publications</a>
                 <a href="pages/projects.html">Projects</a>
-                <a href="pages/media.html">Media</a>
+                <a href="pages/media.html">News & Media</a>
                 <a href="pages/blog.html">Blog</a>
             </nav>
 
             <section id="about">
                 <h2>README.md</h2>
                 <p>Non-professional 🏀 basketball player, professional "sports commentator", non-professional <a href="https://www.reachthefinals.com/" target="_blank">THE FINALS</a> gamer.</p>
+            </section>
+
+            <section id="latest-news">
+                <h2>Latest News</h2>
+                <ul class="news-list" id="homepageNewsList">
+                    <!-- Populated by js/news.js -->
+                </ul>
+                <p class="news-more">
+                    <a href="pages/media.html#news-archive">View all news →</a>
+                </p>
             </section>
 
             <section id="education">
@@ -516,6 +575,21 @@
         });
       </script>
     
+    <script src="js/news.js"></script>
+    <script>
+        (function renderHomepageNews() {
+            const list = document.getElementById('homepageNewsList');
+            if (!list || typeof newsItems === 'undefined') return;
+            const latest = newsItems.slice(0, 5);
+            list.innerHTML = latest.map(item => `
+                <li>
+                    <span class="news-date">${item.date}</span>
+                    <span class="news-text">${item.text}</span>
+                </li>
+            `).join('');
+        })();
+    </script>
+
     <!-- Animation script -->
     <script src="js/animation.js"></script>
 </body>
