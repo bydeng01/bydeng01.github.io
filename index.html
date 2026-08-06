@@ -254,6 +254,54 @@
         .cert-button:hover { background-color: #f5f5f7; }
         .cert-button i { font-size: 0.75em; }
 
+        /* Education timeline */
+        .edu-timeline {
+            position: relative;
+            margin-top: 1rem;
+            padding-left: 1.75rem;
+        }
+
+        .edu-timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 12px;
+            bottom: 12px;
+            width: 2px;
+            background: #e2e2e7;
+        }
+
+        .edu-timeline .education-item {
+            position: relative;
+            margin-bottom: 0;
+            padding: 0 0 1.75rem 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+        }
+
+        .edu-timeline .education-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .edu-timeline .education-item:hover {
+            box-shadow: none;
+        }
+
+        .edu-timeline .education-item::before {
+            content: "";
+            position: absolute;
+            left: -27px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d4a13a;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 0 1.5px #d4a13a;
+            box-sizing: border-box;
+        }
+
         .news-list {
             list-style: none;
             padding-left: 0;
@@ -385,6 +433,7 @@
 
             <section id="education">
                 <h2>Education</h2>
+                <div class="edu-timeline">
                 <div class="education-item">
                     <h3>Johns Hopkins University <span class="location">Baltimore, MD, USA</span></h3>
                     <div class="degree-date">
@@ -456,6 +505,7 @@
                         <p class="degree"><strong>B.Eng. in Civil Engineering</strong></p>
                         <p class="date">Sep. 2018 - June 2022</p>
                     </div>
+                </div>
                 </div>
             </section>
 
