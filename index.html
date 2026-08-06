@@ -302,6 +302,51 @@
             box-sizing: border-box;
         }
 
+        /* In-card research timeline */
+        .res-timeline {
+            position: relative;
+            margin-top: 0.75rem;
+            padding-left: 1.5rem;
+        }
+
+        .res-timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 12px;
+            bottom: 12px;
+            width: 2px;
+            background: #e2e2e7;
+        }
+
+        /* single-experience card: show only the dot, no connecting line */
+        .res-timeline:has(.res-entry:only-child)::before {
+            display: none;
+        }
+
+        .res-entry {
+            position: relative;
+            padding-bottom: 1.1rem;
+        }
+
+        .res-entry:last-child {
+            padding-bottom: 0;
+        }
+
+        .res-entry::before {
+            content: "";
+            position: absolute;
+            left: -23px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d4a13a;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 0 1.5px #d4a13a;
+            box-sizing: border-box;
+        }
+
         .news-list {
             list-style: none;
             padding-left: 0;
@@ -512,36 +557,42 @@
             <section id="research">
                 <h2>Research Experience</h2>
                 <div class="research-item">
-                    <h3>Shields Uncertainty Research Group, CaSE Dept., Johns Hopkins University <span class="location">Baltimore, MD, USA</span></h3>
-                    <div class="position-info">
-                      <div class="degree-date">
-                        <p><strong>Doctoral Research Assistant</strong></p>
-                        <p class="date">Aug. 2024 - Present</p>
+                    <h3>Johns Hopkins University, CaSE Dept. <span class="location">Baltimore, MD, USA</span></h3>
+                    <div class="position-info res-timeline">
+                      <div class="res-entry">
+                        <div class="degree-date">
+                          <p><strong>Doctoral Research Assistant, Shields Uncertainty Research Group</strong></p>
+                          <p class="date">Aug. 2024 - Present</p>
+                        </div>
+                        <p style="padding-left: 20px;">
+                          - Multi-fidelity Data Modeling: Extreme mechanics of the human brain.
+                        </p>
                       </div>
-                      <p style="padding-left: 20px;">
-                        - Multi-fidelity Data Modeling: Extreme mechanics of the human brain.
-                      </p>
                     </div>
                   </div>
 
                 <div class="research-item">
                     <h3>Duke University, CEE Dept. <span class="location">Durham, NC, USA</span></h3>
-                    <div class="position-info">
-                      <div class="degree-date">
-                        <p><strong>Graduate Research Assistant, Guglielmo Scovazzi Research Group</strong></p>
-                        <p class="date">May 2023 - Apr. 2024</p>
+                    <div class="position-info res-timeline">
+                      <div class="res-entry">
+                        <div class="degree-date">
+                          <p><strong>Graduate Research Assistant, Guglielmo Scovazzi Research Group</strong></p>
+                          <p class="date">May 2023 - Apr. 2024</p>
+                        </div>
+                        <p style="padding-left: 20px;">
+                          - Embedded Methods for Linear Elasticity: Bone scaffold topology optimization with the Shifted Boundary Method.
+                        </p>
                       </div>
-                      <p style="padding-left: 20px;">
-                        - Embedded Methods for Linear Elasticity: Bone scaffold topology optimization with the Shifted Boundary Method.
-                      </p>
-                      <div class="degree-date">
-                        <p><strong>Graduate Research Assistant, Laura Dalton Research Group</strong></p>
-                        <p class="date">May 2023 - Feb. 2024</p>
+                      <div class="res-entry">
+                        <div class="degree-date">
+                          <p><strong>Graduate Research Assistant, Laura Dalton Research Group</strong></p>
+                          <p class="date">May 2023 - Feb. 2024</p>
+                        </div>
+                        <p style="padding-left: 20px;">
+                          - Alternative Cementitious Materials Testing: Triaxial testing, compression testing, and mechanical analysis
+                          of cementitious materials.
+                        </p>
                       </div>
-                      <p style="padding-left: 20px;">
-                        - Alternative Cementitious Materials Testing: Triaxial testing, compression testing, and mechanical analysis
-                        of cementitious materials.
-                      </p>
                     </div>
                   </div>
                 
