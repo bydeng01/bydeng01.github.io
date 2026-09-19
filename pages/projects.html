@@ -297,6 +297,7 @@
         
         function fetchGitHubRepos() {
             const username = 'bydeng01';
+            const includedForks = ['linpde-gp'];
             const reposContainer = document.getElementById('github-repos');
             const lastUpdatedElement = document.getElementById('last-updated');
             const maxRepos = 24; // Set maximum number of repositories to display
@@ -313,6 +314,9 @@
                     return response.json();
                 })
                 .then(repos => {
+                    // Exclude forks unless explicitly included
+                    repos = repos.filter(repo => !repo.fork || includedForks.includes(repo.name));
+
                     if (repos.length === 0) {
                         reposContainer.innerHTML = '<p>No repositories found.</p>';
                         return;
@@ -337,7 +341,6 @@
                     repos.forEach(repo => {
                         // Only process up to maxRepos repositories
                         if (displayedRepos >= maxRepos) return;
-                        // Don't filter out forked repositories anymore
                         
                         // Create repository element
                         const repoElement = document.createElement('div');
